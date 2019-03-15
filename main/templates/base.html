@@ -19,9 +19,15 @@
 					<a id="logo-container" href="/" class="brand-logo"><span class="yellow-text">FEED</span> <span class="green-text">THE</span> <span class="red-text">NEED</span></a>
 					<!-- nav menu -->
 					<ul class="right hide-on-med-and-down">
-						<li>
-							
-						</li>
+								
+								{% if user.is_authenticated %}
+								<li><a href="{% url 'signup' %}">Sign Up</a></li>
+									<li><a href="{% url 'logout' %}">Log Out</a></li>
+								{% else %}
+									<li><a href="{% url 'login' %}">Log In</a></li>
+								{% endif %}
+
+						
 					</ul>
 					<!-- #nav-mobile sidenav -->
 					<ul id="nav-mobile" class="sidenav yellow">
@@ -35,13 +41,6 @@
     
     <main class="container">
 				{% block content %}
-				<li><a href="{% url 'about' %}">About</a></li>
-				{% if user.is_authenticated %}
-					
-					<li><a href="{% url 'logout' %}">Log Out</a></li>
-				{% else %}
-					<li><a href="{% url 'login' %}">Log In</a></li>
-				{% endif %}
         {% endblock %}
     </main>
 	 <footer class="page-footer green">
@@ -75,7 +74,7 @@
 			</div>
 			<div class="footer-copyright">
 			  <div class="container">
-			  Made byy <a class="grey-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+			  Made by <a class="grey-text text-lighten-3" href="http://materializecss.com">Materialize</a>
 			  </div>
 			</div>
 		 </footer>
