@@ -26,6 +26,7 @@ SECRET_KEY = 'l4eb3gf@l)0%^p&8yax1_ffltbl3s0_3dl66-i-r$r=oi#ylji'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+	'localhost',
 	'feed-the-need.herokuapp.com',
 ]
 
