@@ -34,7 +34,14 @@
         </nav>
     
     <main class="container">
-        {% block content %}
+				{% block content %}
+				<li><a href="{% url 'about' %}">About</a></li>
+				{% if user.is_authenticated %}
+					
+					<li><a href="{% url 'logout' %}">Log Out</a></li>
+				{% else %}
+					<li><a href="{% url 'login' %}">Log In</a></li>
+				{% endif %}
         {% endblock %}
     </main>
 	 <footer class="page-footer green">
