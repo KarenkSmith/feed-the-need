@@ -1,21 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-	<div class="row">
-		<div id="map" class="col s9 yellow">&nbsp;</div>
-		<div id="nearby-needs" class="col s3 red lighten-1">
-			<h2 style="font-size: 1.5em; font-weight: bold; padding: 0 5px">Someone nearby needs</h2>
-			{% for item in ni %}
-			<div class="card red lighten-3">
-				<div class="card-content">
-					<p><strong>{{ item.quantity }} {{ item.item }}</strong></p>
-					<p style="font-size: 0.75em">{{ item.date }}</p>
-				</div>
+<div class="row">
+	<div id="map" class="col s9 yellow">&nbsp;</div>
+	<div id="nearby-needs" class="col s3 red lighten-1">
+		<h2 style="font-size: 1.5em; font-weight: bold; padding: 0 5px">Someone nearby needs</h2>
+		{% for item in ni %}
+		<div class="card red lighten-3">
+			<div class="card-content">
+				<p><strong>{{ item.quantity }} {{ item.item }}</strong></p>
+				<p style="font-size: 0.75em">{{ item.date }}</p>
 			</div>
-			{% endfor %}
 		</div>
+		{% endfor %}
 	</div>
-
+</div>
 
 {% endblock %}

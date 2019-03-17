@@ -26,7 +26,7 @@ def signup(request):
 		user = form.save()
 		# This is how we log a user in via code
 		login(request, user)
-		return redirect('feeds')
+		return redirect('home')
 	else:
 		error_message = 'Invalid credentials - try again'
 		# A bad POST or a GET request, so render signup.html with an empty form
