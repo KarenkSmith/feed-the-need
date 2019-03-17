@@ -22,3 +22,5 @@ class NeededItem(models.Model):
 
 	def __str__(self):
 		return self.item.__str__()
+
+

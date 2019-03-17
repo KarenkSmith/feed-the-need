@@ -1,23 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .models import NeededItem
 
 # Views
-
-# Home
-def home(request):
-	needed_items = NeededItem.objects.all()
-	return render(request, 'index.html', {'ni': needed_items})
-
-# About
-def about(request):
-	return render(request, 'about.html')
-
-def feeds(request):
-	return render(request, 'feeds.html')
-
 def signup(request):
 	error_message = ''
 	if request.method == 'POST':
@@ -33,3 +20,16 @@ def signup(request):
 		form = UserCreationForm()
 		context = {'form': form, 'error_message': error_message}
 	return render(request, 'registration/signup.html', context)
+
+# Home
+def home(request):
+	needed_items = NeededItem.objects.all()
+	return render(request, 'index.html', {'ni': needed_items})
+
+# About
+def about(request):
+	return render(request, 'about.html')
+
+def feeds(request):
+	return render(request, 'feeds.html')
+
