@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import now
 from datetime import date
 
 class Item(models.Model):
@@ -10,7 +11,7 @@ class Item(models.Model):
 		return self.what
 
 class NeededItem(models.Model):
-	date = models.DateField()
+	date = models.DateField(default=now())
 	item = models.ForeignKey(Item, null=True, on_delete=models.SET_NULL)
 	description = models.TextField(max_length=250)
 	quantity = models.IntegerField()
