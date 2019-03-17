@@ -12,7 +12,7 @@ class NeededItem(models.Model):
 	item = models.ForeignKey(Item, null=True, on_delete=models.SET_NULL)
 	description = models.TextField(max_length=250)
 	quantity = models.IntegerField()
-	location = models.TextField(max_length=250)
+	address = models.TextField(max_length=250)
 
 	def __str__(self):
-		return self.item
+		return self.item.__str__()
