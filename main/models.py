@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 from django.utils.timezone import now
 from datetime import date
@@ -11,12 +12,13 @@ class Item(models.Model):
 		return self.what
 
 class NeededItem(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	date = models.DateField(default=now())
 	item = models.ForeignKey(Item, null=True, on_delete=models.SET_NULL)
 	description = models.TextField(max_length=250)
-	quantity = models.IntegerField()
+	quantity = models.IntegerField(default=1)
 	address = models.TextField(max_length=250)
-	# fulfilled_by = 
+	donated_by = models.ForeignKey(User, related_name="donated", null=True, blank=True, on_delete=models.SET_NULL)
 
 	def __str__(self):
 		return self.item.__str__()
