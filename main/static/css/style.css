@@ -4,33 +4,34 @@ html, body {
 	padding: 0;
  }
  
- body {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	min-height: 100vh;
- }
+body {
+display: flex;
+flex-direction: column;
+flex-wrap: nowrap;
+justify-content: flex-start;
+min-height: 100vh;
+}
  
- main {
-	flex: 4 0 calc(100% - 64px);
- }
+main {
+flex: 4 0 calc(100% - 64px);
+}
  
- a {
-	
- }
- 
- .icon-block {
-	padding: 0 15px;
- }
- .icon-block .material-icons {
-	 font-size: inherit;
- }
+a {
 
- nav ul{
-	list-style: none;
-	margin: 0 2px;
-	padding: 0;
-	display: flex;
-	justify-content: space-around;
-  }
+}
+ 
+.icon-block {
+padding: 0 15px;
+}
+
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+nav ul {
+list-style: none;
+margin: 0 2px;
+padding: 0;
+display: flex;
+justify-content: space-around;
+}
