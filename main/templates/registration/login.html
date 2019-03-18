@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h2>Log In</h2>
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class="green btn" value="login">
-    <input type="hidden" name="next" value="{{ next }}">
-  </form>
-
+<br>
+<br>
+<div class="valign-wrapper row login-box">
+    <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
+      <h2>Log In</h2>
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="card-action right-align">
+        <input type="submit" class="green btn" value="login">
+        <input type="hidden" name="next" value="{{ next }}">
+        </div>
+      </form>
+  </div>
+</div>
 {% endblock %}
