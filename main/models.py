@@ -27,15 +27,18 @@ class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	org_name = models.CharField(max_length=50, null=True, blank=True)
 	address = models.TextField(max_length=250, null=True, blank=True)
-	phone_number = models.IntegerField(null=True, blank=True)
+	phone_number = models.CharField(max_length=10, null=True, blank=True)
 	org_description = models.TextField(max_length=250, null=True, blank=True)
 	org_url =  models.URLField(max_length=250, null=True, blank=True)
 	wish_list =  models.URLField(max_length=250, null=True, blank=True)
 
     
 	def get_absolute_url(self):
-		 return reverse('profile', kwargs={'user_id': self.id})
+		return reverse('profile', kwargs={'profile_id': self.id})
 
+class Photo(models.Model):
+	url = models.CharField(max_length=200)
+	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
-
-
+	def __str__(self):
+		return f"Photo for profile_id: {self.profile_id} @{self.url}"
