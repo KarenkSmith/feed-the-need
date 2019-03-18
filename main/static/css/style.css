@@ -13,12 +13,22 @@ min-height: 100vh;
 font-family: 'Raleway', sans-serif;
 }
 
-h1 {
-text-align: center;
-}
-h1, h2, h5 {
+h2 {
+text-align: left;
 font-family: 'Permanent Marker', cursive;
+color: #212121;
 }
+
+h1, h4 {
+text-align: center;
+font-family: 'Permanent Marker', cursive;
+text-shadow: 1px 1px #212121;
+}
+
+input {
+font-family: 'Raleway', sans-serif;
+}
+
 
 main {
 flex: 4 0 calc(100% - 64px);
@@ -58,3 +68,35 @@ justify-content: space-around;
 footer {
 font-family: 'Raleway', sans-serif;
 }
+
+
+/* Font Awesome Icons */
+.fa {
+	padding: 15px;
+	font-size: 30px;
+	width: 60px;
+	height: 60px;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 50%;
+	margin: 2px;
+  }
+  .fa:hover {
+	opacity: 0.7;
+  }
+  .fa-facebook {
+	background: #3B5998;
+	color: white;
+  }
+  .fa-twitter {
+	background: #55ACEE;
+	color: white;
+  }
+  .fa-instagram {
+	background: #125688;
+	color: white;
+  }
+  .fa-envelope {
+	background: #212121;
+	color: white;
+  }
