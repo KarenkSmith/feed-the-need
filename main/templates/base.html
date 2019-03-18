@@ -11,78 +11,80 @@
 	<link type="text/css" rel='stylesheet' href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 	<link type="text/css" rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Raleway" rel="stylesheet">
 	<link type="text/css" rel='stylesheet' href="{% static 'css/style.css' %}" />
 </head>
 
 <body>
+
 	<nav>
-		<h1 class="brand-logo"><strong>
-				<span class="yellow-text">FEED</span>
-				<span class="green-text">THE</span>
-				<span class="red-text">NEED</span></strong></h1>
 	</nav>
-	<ul id="slide-out" class="sidenav">
-		
-		
+
+	<ul id="slide-out" class="sidenav green white-text" style="margin: 15px">
+		<br>
 		{% if user.is_authenticated %}
 		<li><a href="#!">View Needs</a></li>
 		<li><a href="#!">View Feeds</a></li>
-		<li><div class="divider"></div></li>
-		<li><a href="">Profile</a></li>
+		<br>
+		<li>
+			<div class="divider"></div>
+		</li>
+		<br>
+		<li><a href="">Your Profile</a></li>
 		<li><a href="{% url 'logout' %}">Log Out</a></li>
 		{% else %}
 		<li><a href="#!">View Needs</a></li>
-		<li><div class="divider"></div></li>
-		<li><a href="{% url 'login' %}">Log In</a>or</li>
-		<li><a href="{% url 'signup' %}">Sign Up</a></li>
+		<br>
+		<li>
+			<div class="divider"></div>
+		</li>
+		<br>
+		<li><a href="{% url 'login' %}">Log In</a>
+			<a href="{% url 'signup' %}">Sign Up</a></li>
 		{% endif %}
 
 	</ul>
-	<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
-
-
-
+	
+	<a href="#" data-target="slide-out" class="sidenav-trigger green "><i class="medium material-icons icon-yellow">menu</i></a>
+	
+	<h1 class="brand-logo"><strong>
+			<span class="yellow-text">FEED</span>
+			<span class="green-text">THE</span>
+			<span class="red-text">NEED</span></strong></h1>
+	
 	<main class="container" style="width: 100%; padding: 0; margin: 0">
 		{% block content %}
 		{% endblock %}
 	</main>
+
+
+
 	<footer class="page-footer green">
 		<div class="container">
 			<div class="row">
 				<div class="col l6 s12">
-					<h5 class="white-text">Company Bio</h5>
-					<p class="grey-text text-lighten-4">We are a team of college students working on this project like
-						it's our
-						full time job. Any amount would help support and continue development on this project and is
-						greatly
-						appreciated.</p>
-
-
+					<h5 class="white-text">Feed the Need</h5>
+					<p class="grey-text text-lighten-4">
+						Our mission is to connect people who have items to donate with the people who need these items.
+						We aid diaster relief, those in desperate times of need, or people who are simply cleaning out
+						their closet.
+					</p>
 				</div>
+				<div class="col l3 s12"></div>
 				<div class="col l3 s12">
-					<h5 class="white-text">Settings</h5>
+					<h5 class="white-text">Connect with Us! </h5>
 					<ul>
-						<li><a class="white-text" href="#!">Link 1</a></li>
-						<li><a class="white-text" href="#!">Link 2</a></li>
-						<li><a class="white-text" href="#!">Link 3</a></li>
-						<li><a class="white-text" href="#!">Link 4</a></li>
-					</ul>
-				</div>
-				<div class="col l3 s12">
-					<h5 class="white-text">Connect</h5>
-					<ul>
-						<li><a class="white-text" href="#!">Link 1</a></li>
-						<li><a class="white-text" href="#!">Link 2</a></li>
-						<li><a class="white-text" href="#!">Link 3</a></li>
-						<li><a class="white-text" href="#!">Link 4</a></li>
+						<li><a class="white-text" href="#!">Email Us!</a></li>
+						<li><a class="white-text" href="#!">Facebook</a></li>
+						<li><a class="white-text" href="#!">Twitter</a></li>
+						<li><a class="white-text" href="#!">Instagram</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<div class="footer-copyright">
+		<div class="footer-copyright grey darken-4">
 			<div class="container">
-				Made byy <a class="grey-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+				<!-- footer text -->
 			</div>
 		</div>
 	</footer>
