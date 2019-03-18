@@ -35,13 +35,8 @@ def feeds(request):
 
 def profile(request, user_id):
 	profile = Profile.objects.get(id=user_id)
-	fields = '__all__'
-  # Get the toys the cat doesn't have
-  	# toys_cat_doesnt_have = Toy.objects.exclude(id__in = cat.toys.all().values_list('id'))
-  # Instantiate FeedingForm to be rendered in the template
-  	needed_items = NeededItem.objects.all()
-  	return render(request, 'profile.html', {
-    # Pass the cat and feeding_form as context
-    	'profile': profile, 'needed_items': needed_items,
-    
-  })
+	needed_items = NeededItem.objects.all()
+	return render(request, 'profile.html', {
+	'profile': profile, 'needed_items': needed_items,
+
+})
