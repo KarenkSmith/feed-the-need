@@ -22,3 +22,16 @@ class NeededItem(models.Model):
 
 	def __str__(self):
 		return self.item.__str__()
+
+class Profile(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	org_name = models.CharField(max_length=50, null=True, blank=True)
+	address = models.TextField(max_length=250, null=True, blank=True)
+	phone_number = models.IntegerField(null=True, blank=True)
+	org_description = models.TextField(max_length=250, null=True, blank=True)
+	org_url =  models.URLField(max_length=250, null=True, blank=True)
+	wish_list =  models.URLField(max_length=250, null=True, blank=True)
+
+
+
+
