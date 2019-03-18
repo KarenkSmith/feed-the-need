@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .models import NeededItem, Profile
-from django.views.generic.edit import UpdateView, DeleteView
+from django.views.generic.edit import CreateView,UpdateView, DeleteView
 
 # Views
 def signup(request):
@@ -24,12 +24,21 @@ def signup(request):
 
 class ProfileUpdate(UpdateView):
   model = Profile
-  # Let's make it impossible to rename a cat :)
   fields = '__all__'
 
 class ProfileDelete(DeleteView):
   model = Profile
   success_url = '/'
+
+# class ProfileCreate(CreateView):
+#   model = Profile
+#   fields = '__all__'
+
+#   def form_valid(self, form):
+#     # Assign the logged in user
+#     form.instance.user = self.request.user
+#     # Let the CreateView do its job as usual
+#     return super().form_valid(form)
 
 # Home
 def home(request):
@@ -43,8 +52,8 @@ def about(request):
 def feeds(request):
 	return render(request, 'feeds.html')
 
-def profile(request, user_id):
-	profile = Profile.objects.get(id=user_id)
+def profile(request, profile_id):
+	profile = Profile.objects.get(id=profile_id)
 	needed_items = NeededItem.objects.all()
 	return render(request, 'user/profile.html', {
 	'profile': profile, 'needed_items': needed_items,
