@@ -3,6 +3,9 @@ html, body {
 	margin: 0;
 	padding: 0;
 }
+main {
+	margin: 0px 30px;
+}
  
 body {
 display: flex;
@@ -14,7 +17,7 @@ font-family: 'Raleway', sans-serif;
 }
 
 h2 {
-text-align: left;
+text-align: center;
 font-family: 'Permanent Marker', cursive;
 color: #212121;
 }
@@ -28,12 +31,31 @@ text-shadow: 1px 1px #212121;
 input {
 font-family: 'Raleway', sans-serif;
 }
-
-
+input:not([type]):focus:not([readonly]), 
+input[type="text"]:not(.browser-default):focus:not([readonly]), 
+input[type="password"]:not(.browser-default):focus:not([readonly]), 
+input[type="email"]:not(.browser-default):focus:not([readonly]), 
+input[type="url"]:not(.browser-default):focus:not([readonly]), 
+input[type="time"]:not(.browser-default):focus:not([readonly]), 
+input[type="date"]:not(.browser-default):focus:not([readonly]), 
+input[type="datetime"]:not(.browser-default):focus:not([readonly]), 
+input[type="datetime-local"]:not(.browser-default):focus:not([readonly]), 
+input[type="tel"]:not(.browser-default):focus:not([readonly]), 
+input[type="number"]:not(.browser-default):focus:not([readonly]), 
+input[type="search"]:not(.browser-default):focus:not([readonly]), 
+textarea.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid black;
+	-webkit-box-shadow: 0 1px 0 0 black;
+	box-shadow: 0 1px 0 0 black;
+	background: transparent !important;
+	background-color: transparent !important;
+}
 main {
 flex: 4 0 calc(100% - 64px);
 }
- 
+
+/* hamburger menu icon */
+
 i.icon-yellow {
 	color: white;
 	margin: 0 20px;
@@ -49,6 +71,7 @@ padding: 0 15px;
 	font-size: inherit;
 }
 
+/* slide out nav bar */
 #slide-out > li > a {
 	color: #ffffff !important;
 	text-decoration: none;
@@ -56,7 +79,6 @@ padding: 0 15px;
 	font-family: 'Permanent Marker', cursive;
 	text-align: center;
 }
-
 nav ul {
 list-style: none;
 margin: 10px;
@@ -64,6 +86,8 @@ padding: 0;
 display: flex;
 justify-content: space-around;
 }
+
+
 
 footer {
 font-family: 'Raleway', sans-serif;
