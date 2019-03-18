@@ -11,6 +11,7 @@
 	<link type="text/css" rel='stylesheet' href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 	<link type="text/css" rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Raleway" rel="stylesheet">
 	<link type="text/css" rel='stylesheet' href="{% static 'css/style.css' %}" />
 </head>
@@ -45,25 +46,34 @@
 
 	</ul>
 	
-	<a href="#" data-target="slide-out" class="sidenav-trigger green "><i class="medium material-icons icon-yellow">menu</i></a>
-	
-	<h1 class="brand-logo"><strong>
+	<a href="#" data-target="slide-out" class="sidenav-trigger green">
+	<ul style="display: flex; flex-direction: row; justify-content: space-between">
+		<li><i class="medium material-icons icon-yellow">menu</i></li>
+		<li><h1 class="brand-logo" style="margin:0 50px">
 			<span class="yellow-text">FEED</span>
-			<span class="green-text">THE</span>
-			<span class="red-text">NEED</span></strong></h1>
+			<span class="grey-text text-darken-4">THE</span>
+			<span class="red-text">NEED</span>
+		</h1></li>
+		<li></li>
+	</ul>
+	</a>
 	
-	<main class="container" style="width: 100%; padding: 0; margin: 0">
+	
+	
+	<main class="container" style="width: 100%; padding: 0; margin: 0 30px">
 		{% block content %}
 		{% endblock %}
 	</main>
-
-
 
 	<footer class="page-footer green">
 		<div class="container">
 			<div class="row">
 				<div class="col l6 s12">
-					<h5 class="white-text">Feed the Need</h5>
+					<h4>
+					<span class="yellow-text">FEED</span>
+					<span class="grey-text text-darken-4">THE</span>
+					<span class="red-text">NEED</span>
+					</h4>
 					<p class="grey-text text-lighten-4">
 						Our mission is to connect people who have items to donate with the people who need these items.
 						We aid diaster relief, those in desperate times of need, or people who are simply cleaning out
@@ -72,12 +82,13 @@
 				</div>
 				<div class="col l3 s12"></div>
 				<div class="col l3 s12">
-					<h5 class="white-text">Connect with Us! </h5>
-					<ul>
-						<li><a class="white-text" href="#!">Email Us!</a></li>
-						<li><a class="white-text" href="#!">Facebook</a></li>
-						<li><a class="white-text" href="#!">Twitter</a></li>
-						<li><a class="white-text" href="#!">Instagram</a></li>
+					<h5 class="white-text"></h5>
+					<br>
+					<ul style="display: flex; flex-direction: row; justify-content: flex-start">
+						<li><a href="#" class="fa fa-envelope"></a></li>
+						<li><a href="#" class="fa fa-twitter"></a></li>
+						<li><a href="#" class="fa fa-facebook"></a></li>
+						<li><a href="#" class="fa fa-instagram"></a></li>
 					</ul>
 				</div>
 			</div>
