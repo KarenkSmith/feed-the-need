@@ -1,4 +1,20 @@
 {% extends 'base.html' %}
-
-<h1>HELLO</h1>
+{% block content %}
+<div class="row">
+    <div class="col s6">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">{{ profile.name }}</span>
+          <p>organization Name: {{ profile.org_name }}</p>
+          <p>address: {{ profile.address }}</p>
+          <p>phone number: {{ profile.phone_number }}</p>
+          <p>org description: {{ profile.org_description }}</p>
+          <p>URL {{ profile.org_url }}</p>
+          <p>amazon wishlist: {{ profile.wish_list }}</p>
+          <div class="card-action">
+            <a href="{% url 'profile_update' user.id %}">edit</a>
+            <a href="{% url 'profile_delete' user.id %}">delete</a>
+          </div>
+         
+        </div>
 {% endblock %}
