@@ -12,8 +12,8 @@
           <p>URL {{ profile.org_url }}</p>
           <p>amazon wishlist: {{ profile.wish_list }}</p>
           <div class="card-action">
-            <a href="{% url 'profile_update' user.id %}">edit</a>
-            <a href="{% url 'profile_delete' user.id %}">delete</a>
+            <a href="{% url 'profile_update' profile.id %}">edit</a>
+            <a href="{% url 'profile_delete' profile.id %}">delete</a>
           </div>
          
         </div>

@@ -32,8 +32,6 @@ class Profile(models.Model):
 	org_url =  models.URLField(max_length=250, null=True, blank=True)
 	wish_list =  models.URLField(max_length=250, null=True, blank=True)
 
-	def __str__(self):
-		return self.user
     
 	def get_absolute_url(self):
 		 return reverse('profile', kwargs={'user_id': self.id})
