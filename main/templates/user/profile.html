@@ -11,6 +11,19 @@
           <p>org description: {{ profile.org_description }}</p>
           <p>URL {{ profile.org_url }}</p>
           <p>amazon wishlist: {{ profile.wish_list }}</p>
+          <div class="card-content">
+              {% for needed_item in needed_items %}
+                <div class='card'>
+                  <div class="card-content">
+                    <span class='card-title'>{{ needed_item.item }}</span>
+                    
+                    <p>description: {{ needed_item.description }}</p>
+                    <p>drop off address: {{ needed_item.address }}</p>
+                    <p>quantity: {{ needed_item.quantity }}</p>
+                </div>
+              </div>
+              </a>
+              {% endfor %}
           <div class="card-action">
             <a href="{% url 'profile_update' profile.id %}">edit</a>
             <a href="{% url 'profile_delete' profile.id %}">delete</a>
