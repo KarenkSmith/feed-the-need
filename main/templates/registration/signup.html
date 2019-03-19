@@ -12,7 +12,7 @@
     <form method="post" action="{% url 'signup' %}">
       {% csrf_token %}
       {{ form.as_p }}
-      <div class="card-action right-align">
+      <div class="card-action center-align">
       <input type="submit" class="green btn" value="signup">
     </div>
     </form>
