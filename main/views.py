@@ -17,9 +17,11 @@ def signup(request):
 		form = UserCreationForm(request.POST)
 		if form.is_valid():
 			user = form.save()
+			profile = Profile(user=user)
+			profile.save()
 			# This is how we log a user in via code
 			login(request, user)
-			return redirect('home')
+			return redirect('profile', profile_id=profile_id)
 	else:
 		error_message = 'Invalid credentials - try again'
 		# A bad POST or a GET request, so render signup.html with an empty form
