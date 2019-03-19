@@ -1,6 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<script>
+	window.items = []
+	{% for item in ni %}
+		
+		window.items.push(
+			{
+				what: '{{item.item}}',
+				quantity: '{{ item.quantity }}',
+				address: '{{ item.address }}',
+				date: '{{ item.date }}'
+			});
+	{% endfor %}
+</script>
+
 <div class="row">
 	<div id="map" class="col s9 yellow" style="height: 800px"></div>
 	<div id="nearby-needs" class="col s3 red lighten-1">
