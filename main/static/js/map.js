@@ -172,7 +172,6 @@ const mapStyle = [
 
 var map, gc;
 var mark = [], iW = [];
-var o;
 var lat = 34.013253, lng = -118.495211;
 
 // Escapes HTML characters in a template literal string, to prevent XSS
@@ -205,28 +204,34 @@ function initMap() {
 		fullscreenControl: true,
 	});
 
-	// // Markers and info windows
-	// o = JSON.parse(window.json);
-	// for (var i = 0; i < o.features.length; i++) {
-	// 	let f = o.features[i];
-	// 	let c = f.geometry.coordinates;
-	// 	let cs = `<strong>${f.properties.name}</strong><br>${f.properties.address}`;
-	// 	iW.push(new google.maps.InfoWindow({
-	// 		content: cs,
-	// 		maxWidth: 200
-	// 	 }));
-	// 	mark.push(new google.maps.Marker({
-	// 		position: {lat: c[0], lng: c[1]},
-	// 		map: map,
-	// 		icon: 'images/ph.png',
-	// 		title: f.properties.name,
-	// 		zIndex: i
-	// 	}));
-	// 	mark[i].addListener('click', function() {
-	// 		i = this.zIndex;
-	// 		iW[i].open(map, mark[i]);
-	// 	 });
-	//  }
+	gc = new google.maps.Geocoder();
+
+	// Markers and info windows
+	for (var i = 0; i < window.items.length; i++) {
+		let item = window.items[i];
+		let cs = `<strong>${item.quantity} ${item.item}</strong><br>${item.address}<br>${item.date}`;
+		iW.push(new google.maps.InfoWindow({
+			content: cs,
+			maxWidth: 200
+		 }));
+		gc.geocode({'address': item.address}, function(results, status) {
+			if (status === 'OK') {
+				lat = results[0].geometry.location.lat();
+				lng = results[0].geometry.location.lng();
+				map.setCenter(results[0].geometry.location);
+			}
+		});
+		mark.push(new google.maps.Marker({
+			position: {lat: lat, lng: lng},
+			map: map,
+			title: item.item,
+			zIndex: i
+		}));
+		mark[i].addListener('click', function() {
+			i = this.zIndex;
+			iW[i].open(map, mark[i]);
+		 });
+	 }
 
 	// Geolocate
 	if (navigator.geolocation) {
@@ -253,8 +258,6 @@ function initMap() {
 	// 		geocodeAddress(gc, map);
 	// 	}
 	// });
-	
-	gc = new google.maps.Geocoder();
 
 	// // keypress event listener
 	// var where = document.getElementById("where");
