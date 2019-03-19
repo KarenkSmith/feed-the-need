@@ -8,7 +8,7 @@ from .models import NeededItem, Profile, Photo
 from django.views.generic.edit import CreateView,UpdateView, DeleteView
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
-BUCKET = 'feedtheneed'
+BUCKET = 'feedtheneed2'
 
 # Views
 def signup(request):
