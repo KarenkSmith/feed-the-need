@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 import uuid
 import boto3
 from .models import NeededItem, Profile, Photo
-from django.views.generic.edit import CreateView,UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView 
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'feedtheneed2'
@@ -85,3 +85,7 @@ def profile(request, profile_id):
 	'profile': profile, 'needed_items': needed_items,
 })
 
+class AddItems(CreateView):
+	model = NeededItem
+	fields = '__all__'
+	
