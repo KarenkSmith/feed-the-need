@@ -64,6 +64,11 @@
             <p>DESCRIPTION: {{ needed_item.description }}</p>
             <p>QUANTITY: {{ needed_item.quantity }}</p>
             <p>DROP OFF AT: {{ needed_item.address }}</p>
+            <form action="" method="POST">
+              {% csrf_token %}
+              <input type="submit" value="Yes - Delete!" class="green btn">
+              <a href="{% url 'profile'  %}" style="color: green">Cancel</a>
+            </form>
           </div>
         </div>
       </div>
