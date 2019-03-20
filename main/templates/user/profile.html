@@ -3,7 +3,7 @@
 
 <h1>{{ profile.org_name }} Profile</h1>
 
-<div class="row">
+<div class="row" style="display: flex; align-items: center">
   <div class="col s4">
     {% if profile.photo_set.all %}
     {% for photo in profile.photo_set.all %}
@@ -37,7 +37,7 @@
         <div class="even">Wishlist/Registry:</div>
         <div class="even">{{ profile.wish_list }}</div>
       </div>
-      <div class="card-action">
+      <div class="card-action center-align">
         <a href="{% url 'profile_update' profile.id %}" style="color: green">edit profile</a>
         <a href="{% url 'profile_delete' profile.id %}" style="color: green">delete profile</a>
       </div>
@@ -50,13 +50,17 @@
 
 
   <div class="col s8">
-    <div>
-      <h2> Items Needed </h2>
+    <h2> Items Needed </h2>
+    <div style="text-align: left"><form action="" method="post">
+      {% csrf_token %}
+      <button type="submit" class="green btn">ADD ITEM</button>
+    </form>
+    </div>
       {% for needed_item in needed_items %}
       <div class='item-content'>
-        <div class="card" style="padding: 15px">
+        <div class="card" style="padding: 15px; text-align: center">
           <div>
-            <span class='card-title'>{{ needed_item.item }}</span>
+            <span class='card-title' style="font-weight: bold">{{ needed_item.item }}</span>
             <p>DESCRIPTION: {{ needed_item.description }}</p>
             <p>QUANTITY: {{ needed_item.quantity }}</p>
             <p>DROP OFF AT: {{ needed_item.address }}</p>
@@ -66,7 +70,6 @@
       </a>
       {% endfor %}
 
-    </div>
   </div>
 
 </div>
