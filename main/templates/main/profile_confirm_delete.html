@@ -3,15 +3,16 @@
 {% block content %}
 <h1>Delete Profile</h1>
 <div class="valign-wrapper row login-box">
-  <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
+  <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4" style="text-align: center">
 
-    <h4>Are you sure you want to delete <span class="green-text">{{ object.user }}'s </span>profile?</h4>
+    <h5>Are you sure you want to delete <span class="green-text">{{ object.user }}'s </span>profile?</h5>
 
     <form action="" method="POST">
       {% csrf_token %}
       <input type="submit" value="Yes - Delete!" class="green btn">
-      <a href="{% url 'profile' user.id %}">Cancel</a>
+      <a href="{% url 'profile' user.id %}" style="color: green">Cancel</a>
     </form>
+    <br>
 
   </div>
 </div>
