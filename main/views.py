@@ -58,7 +58,7 @@ class ProfileDelete(DeleteView):
 
 class ItemDelete(DeleteView):
 	model = NeededItem
-	success_url = 'user/<int:profile_id>/'
+	success_url = '/'
 
 # class ProfileCreate(CreateView):
 #   model = Profile

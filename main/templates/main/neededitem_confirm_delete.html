@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Delete Item</h1>
+<div class="valign-wrapper row login-box">
+  <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4" style="text-align: center">
+
+    <h5>Are you sure you want to delete <span class="green-text">{{ object.item }} </span>?</h5>
+
+    <form action="" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="Yes - Delete!" class="green btn">
+      <a href="/" style="color: green">Cancel</a>
+    </form>
+    <br>
+
+  </div>
+</div>
+{% endblock %}
