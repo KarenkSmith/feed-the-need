@@ -22,23 +22,16 @@
 
 	<ul id="slide-out" class="sidenav green white-text" style="margin: 15px">
 		<br>
-		{% if user.is_authenticated %}
-		<li><a href="#!">View Needs</a></li>
-		<li><a href="#!">View Feeds</a></li>
+		<li><a href="{% url 'home' %}">View Needs</a></li>
 		<br>
 		<li>
 			<div class="divider"></div>
 		</li>
 		<br>
-		<li><a href="">Your Profile</a></li>
+		{% if user.is_authenticated %}
+		<li><a href="/user/{{ profile.id }}">Your Profile</a></li>
 		<li><a href="{% url 'logout' %}">Log Out</a></li>
 		{% else %}
-		<li><a href="#!">View Needs</a></li>
-		<br>
-		<li>
-			<div class="divider"></div>
-		</li>
-		<br>
 		<li><a href="{% url 'login' %}">Log In</a>
 			<a href="{% url 'signup' %}">Sign Up</a></li>
 		{% endif %}
