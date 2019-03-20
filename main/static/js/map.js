@@ -1,6 +1,4 @@
 // GOOGLE MAPS 
-
-const KEY = "AIzaSyDyxRFvU2V2-X6wyUxzk-6y4jfIIaBqts0";
     
 // Zoom levels
 const WORLD = 1;
@@ -171,7 +169,7 @@ const mapStyle = [
 ];
 
 var map, gc;
-var mark = [], iW = [];
+var marks = [], iWs = [];
 var lat = 34.013253, lng = -118.495211;
 
 // Escapes HTML characters in a template literal string, to prevent XSS
@@ -209,28 +207,31 @@ function initMap() {
 	// Markers and info windows
 	for (var i = 0; i < window.items.length; i++) {
 		let item = window.items[i];
-		let cs = `<strong>${item.quantity} ${item.item}</strong><br>${item.address}<br>${item.date}`;
-		iW.push(new google.maps.InfoWindow({
-			content: cs,
-			maxWidth: 200
-		 }));
+		let iW, mark;
+		let latitude, longitude;
+		let cs = `<strong>${item.quantity} ${item.what}</strong><br>${item.address}<br>${item.date}`;
 		gc.geocode({'address': item.address}, function(results, status) {
 			if (status === 'OK') {
-				lat = results[0].geometry.location.lat();
-				lng = results[0].geometry.location.lng();
-				map.setCenter(results[0].geometry.location);
+				latitude = results[0].geometry.location.lat();
+				longitude = results[0].geometry.location.lng();
+				iW = new google.maps.InfoWindow({
+					content: cs,
+					maxWidth: 200
+				 });
+				mark = new google.maps.Marker({
+					position: {lat: latitude, lng: longitude},
+					map: map,
+					title: item.what,
+					zIndex: i
+				});
+				mark.addListener('click', function() {
+					iW.open(map, mark);
+				 });
+			}
+			else {
+				
 			}
 		});
-		mark.push(new google.maps.Marker({
-			position: {lat: lat, lng: lng},
-			map: map,
-			title: item.item,
-			zIndex: i
-		}));
-		mark[i].addListener('click', function() {
-			i = this.zIndex;
-			iW[i].open(map, mark[i]);
-		 });
 	 }
 
 	// Geolocate
