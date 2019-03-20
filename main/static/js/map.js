@@ -1,6 +1,4 @@
 // GOOGLE MAPS 
-
-const KEY = "AIzaSyDyxRFvU2V2-X6wyUxzk-6y4jfIIaBqts0";
     
 // Zoom levels
 const WORLD = 1;
