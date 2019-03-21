@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="home-body" style="background-color:#4caf50; margin-top: 18px;">
+	<script>
+		window.items = []
+		{% for item in ni %}
 
-<script>
-	window.items = []
-	{% for item in ni %}
-		
 		window.items.push(
 			{
 				what: '{{item.item}}',
@@ -12,22 +12,23 @@
 				address: '{{ item.address }}',
 				date: '{{ item.date }}'
 			});
-	{% endfor %}
-</script>
-
-<div class="row">
-	<div id="map" class="col s9 yellow" style="height: 800px"></div>
-	<div id="nearby-needs" class="col s3 red lighten-1">
-		<h2 style="font-size: 1.5em; font-weight: bold; padding: 0 5px">Someone nearby is in need of</h2>
-		{% for item in ni %}
-		<div class="card red lighten-3">
-			<div class="card-content">
-				<p><strong>{{ item.quantity }} {{ item.item }}</strong></p>
-				<p style="font-size: 0.75em">{{ item.date }}</p>
-			</div>
-		</div>
 		{% endfor %}
+	</script>
+
+	<div class="row">
+		<div id="map" class="col s9" style="height: 800px;"></div>
+		<div id="nearby-needs" class="col s3 green" style="overflow: scroll; height: 800px;">
+			<h2 style="font-size: 2em; padding: 5px; color: white; text-shadow: 1px 1px #212121;">
+				Someone nearby needs...</h2>
+			{% for item in ni %}
+			<div class="card white">
+				<div class="card-content" style="text-align: center; grid-template-columns: none; margin: 0;">
+					<p>{{ item.quantity }} {{ item.item }}</p>
+					<p style="font-size: 0.75em">{{ item.date }}</p>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
 	</div>
 </div>
-
 {% endblock %}
