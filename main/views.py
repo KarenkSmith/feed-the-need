@@ -91,5 +91,5 @@ def profile(request, profile_id):
 
 class AddItems(CreateView):
 	model = NeededItem
-	fields = '__all__'
+	fields = ('date', 'item', 'description', 'quantity', 'address')
 	
