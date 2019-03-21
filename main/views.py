@@ -21,12 +21,12 @@ def signup(request):
 			profile.save()
 			# This is how we log a user in via code
 			login(request, user)
-			return redirect('profile', profile_id=profile_id)
-	else:
-		error_message = 'Invalid credentials - try again'
-		# A bad POST or a GET request, so render signup.html with an empty form
-		form = UserCreationForm()
-		context = {'form': form, 'error_message': error_message}
+			return redirect('profile', profile_id=profile.id)
+		else:
+			error_message = 'Invalid credentials - try again'
+			# A bad POST or a GET request, so render signup.html with an empty form
+	form = UserCreationForm()
+	context = {'form': form, 'error_message': error_message}
 	return render(request, 'registration/signup.html', context)
 
 def add_photo(request, profile_id):

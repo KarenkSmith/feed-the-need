@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>{{ profile.org_name }} Profile</h1>
+<h1>{{ profile.user.username }}'s Profile</h1>
 
 <div class="row" style="display: flex; align-items: center">
   <div class="col s4">
@@ -24,7 +24,11 @@
   <div class="col s8">
     <div class="card">
       <div class="card-content">
-        <div>Name:</div>
+			<div>Username:</div>
+			<div>{{ profile.user.username }}</div>
+			<div class="even">Name:</div>
+			<div class="even">{{ profile.user.firstname }} {{ profile.user.lastname }}</div>  
+			<div>Org Name:</div>
         <div>{{ profile.org_name }}</div>
         <div class="even">Address:</div>
         <div class="even">{{ profile.address }}</div>
@@ -50,10 +54,10 @@
 
 
   <div class="col s8">
-    <h2> Items Needed </h2>
+    <h2> What We Need </h2>
     <div style="text-align: left"><form action="{% url 'add_items'%}" method="post">
       {% csrf_token %}
-      <button type="submit" class="green btn">ADD ITEM</button>
+      <button type="submit" class="green btn">ADD SOMETHING TO LIST</button>
     </form>
     </div>
       {% for needed_item in needed_items %}
