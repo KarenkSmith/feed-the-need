@@ -1,11 +1,16 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 import uuid
 import boto3
 from .models import NeededItem, Profile, Photo
 from django.views.generic.edit import CreateView, UpdateView, DeleteView 
+from django.utils.decorators import method_decorator
+
+
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'feedtheneed2'
@@ -48,11 +53,13 @@ def add_photo(request, profile_id):
           print('An error occurred uploading file to S3')
     return redirect('profile', profile_id=profile_id)
 
-class ProfileUpdate(UpdateView):
+@method_decorator(login_required, name='dispatch')
+class ProfileUpdate(LoginRequiredMixin,UpdateView):
   model = Profile
   fields = '__all__'
 
-class ProfileDelete(DeleteView):
+
+class ProfileDelete(LoginRequiredMixin, DeleteView):
   model = Profile
   success_url = '/'
 
@@ -89,7 +96,7 @@ def profile(request, profile_id):
 	'profile': profile, 'needed_items': needed_items,
 })
 
-class AddItems(CreateView):
+class AddItems(LoginRequiredMixin, CreateView):
 	model = NeededItem
 	fields = ('date', 'item', 'description', 'quantity', 'address')
 	
